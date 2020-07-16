@@ -39,12 +39,12 @@ function btn() {
   console.log(dice);
   if (dice != 1) {
     diceDOM.style.display = "block";
-    diceDOM.src = "dice-" + dice + ".png";
+    diceDOM.src = "assets/dice-" + dice + ".png";
     roundScore += dice;
     document.getElementById("current-" + activePlayer).textContent = roundScore;
   } else {
     roundScore = 0;
-    diceDOM.src = "dice-1.png";
+    diceDOM.src = "assets/dice-1.png";
     document.getElementById("current-" + activePlayer).textContent = roundScore;
     changeActivePlayer();
   }
