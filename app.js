@@ -59,7 +59,7 @@ function hold() {
   document.getElementById("score-" + activePlayer).textContent =
     scores[activePlayer];
   document.getElementById("current-" + activePlayer).textContent = roundScore;
-  if (scores[activePlayer] >= 20) {
+  if (scores[activePlayer] >= 100) {
     playerWin();
     return;
   }
