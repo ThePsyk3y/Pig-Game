@@ -20,6 +20,9 @@ function newGame() {
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.remove("winner");
   document
+    .querySelector(".player-0-panel")
+    .classList.add("active");
+  document
     .querySelector("#name-" + activePlayer)
     .textContent = "Player "+activePlayer;
   
@@ -132,7 +135,9 @@ function playerWin() {
   document
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.add("winner");
-  
+  document
+    .querySelector(".player-" + activePlayer + "-panel")
+    .classList.remove("active"); 
   //Hides Dice from view
   document
     .querySelector(".dice")
