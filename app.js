@@ -24,7 +24,7 @@ function newGame() {
     .classList.add("active");
   document
     .querySelector("#name-" + activePlayer)
-    .textContent = "Player "+activePlayer;
+    .textContent = "Player "+(activePlayer+1);
   
   scores[0] = 0;
   scores[1] = 0;
