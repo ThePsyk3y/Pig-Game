@@ -23,7 +23,7 @@ function newGame() {
     .querySelector(".player-0-panel")
     .classList.add("active");
   document
-    .querySelector("#name-" + activePlayer)
+    .getElementById("name-" + activePlayer)
     .textContent = "Player "+(activePlayer+1);
   
   scores[0] = 0;
@@ -130,8 +130,8 @@ function hold() {
 function playerWin() {
   
   document
-  .querySelector("#name-" + activePlayer)
-  .textContent = "Winner!";
+    .getElementById("name-" + activePlayer)
+    .textContent = "Winner!";
   document
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.add("winner");
