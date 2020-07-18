@@ -21,7 +21,7 @@ function newGame() {
     .classList.remove("winner");
   document
     .querySelector("#name-" + activePlayer)
-    .textContent = "Player 1";
+    .textContent = "Player "+activePlayer;
   
   scores[0] = 0;
   scores[1] = 0;
@@ -35,6 +35,9 @@ function newGame() {
   document
     .querySelector(".btn-roll" + activePlayer)
     .style.display = "block";
+  document
+    .querySelector(".btn-roll" + (activePlayer + 1))
+    .style.display = "none";
   document
     .querySelector(".btn-hold")
     .style.display = "block";
