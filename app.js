@@ -23,6 +23,9 @@ function newGame() {
     .querySelector(".player-0-panel")
     .classList.add("active");
   document
+    .querySelector(".player-1-panel")
+    .classList.remove("active");
+  document
     .getElementById("name-" + activePlayer)
     .textContent = "Player "+(activePlayer+1);
   
