@@ -1,9 +1,11 @@
+//*Variables
 var scores, roundScores, activePlayer, dice;
-
+//Variable Initialization
 scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
 
+//Hiding the Oppoite player's roll button and the dice
 document
   .querySelector(".dice")
   .style.display = "none";
@@ -11,6 +13,7 @@ document
   .querySelector(".btn-roll" + (activePlayer + 1))
   .style.display = "none";
 
+//*New Game Function (Resets Everything)
 function newGame() {
 
   document
@@ -51,6 +54,7 @@ function newGame() {
     .textContent = 0;
 }
 
+//*Roll Button Press Funtion (Adds the rolled amount to round score)
 function btn() {
   
   var diceDOM = document.querySelector(".dice");
@@ -86,6 +90,7 @@ function btn() {
 
 }
 
+//*Hold Button Function (Adds round score to global score checks for winner)
 function hold() {
   
   if (roundScore === 0) {
@@ -106,6 +111,7 @@ function hold() {
   
   if (scores[activePlayer] >= 100) {
     
+    //Doesn't change activePlayer
     playerWin();
     return;
   
@@ -113,6 +119,7 @@ function hold() {
   
   changeActivePlayer();
 
+//*Player Win Function (Removes all buttons and dice)
 }
 function playerWin() {
   
@@ -123,6 +130,12 @@ function playerWin() {
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.add("winner");
   
+  //Hides Dice from view
+  document
+    .querySelector(".dice")
+    .style.display = "none";
+
+  //Automatically forces players to start new game
   document
     .querySelector(".btn-roll" + activePlayer)
     .style.display = "none";
@@ -132,7 +145,7 @@ function playerWin() {
 
 }
 
-
+//*Active Player Swap Function
 function changeActivePlayer() {
   
   document
@@ -157,6 +170,7 @@ function changeActivePlayer() {
   
   }
   
+  //Also changes "Current" box's attribute to active
   document
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.add("active");
@@ -170,6 +184,7 @@ function changeActivePlayer() {
 
 }
 
+//*Button Listeners
 document
   .querySelector(".btn-roll0")
   .addEventListener("click", btn);
