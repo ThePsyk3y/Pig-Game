@@ -1,5 +1,5 @@
 //*Variables
-var scores, roundScores, activePlayer, dice;
+var scores, roundScores, activePlayer, dice, diceLog;
 //Variable Initialization
 scores = [0, 0];
 roundScore = 0;
@@ -64,7 +64,7 @@ function newGame() {
 }
 
 //*Roll Button Press Funtion (Adds the rolled amount to round score)
-function btn() {
+function roll() {
   
   var diceDOM = document.querySelector(".dice");
   
@@ -72,12 +72,32 @@ function btn() {
   
   console.log(dice);
   
-  if (dice != 1) {
+  if (dice !== 1) {
     
     diceDOM.style.display = "block";
     diceDOM.src = "assets/dice-" + dice + ".png";
     
     roundScore += dice;
+    
+    if (dice === 6){
+      diceLog++;
+    } else{
+      diceLog = 0;
+    }
+    
+    if (diceLog === 2){
+      scores[activePlayer] = 0;
+      roundScore = 0;
+
+      document
+        .getElementById("score-" + activePlayer)
+        .textContent = scores[activePlayer];
+      document
+        .getElementById("current-" + activePlayer)
+        .textContent = roundScore;
+
+      changeActivePlayer();
+    }
     
     document
       .getElementById("current-" + activePlayer)
@@ -198,10 +218,10 @@ function changeActivePlayer() {
 //*Button Listeners
 document
   .querySelector(".btn-roll0")
-  .addEventListener("click", btn);
+  .addEventListener("click", roll);
 document
   .querySelector(".btn-roll1")
-  .addEventListener("click", btn);
+  .addEventListener("click", roll);
 
 document
   .querySelector(".btn-hold")
