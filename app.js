@@ -79,11 +79,7 @@ function roll() {
     
     roundScore += dice;
     
-    if (dice === 6){
-      diceLog++;
-    } else{
-      diceLog = 0;
-    }
+    dice === 6 ? diceLog++ : diceLog = 0;
     
     if (diceLog === 2){
       scores[activePlayer] = 0;
