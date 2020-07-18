@@ -1,9 +1,11 @@
 //*Variables
-var scores, roundScores, activePlayer, dice, diceLog;
+var scores, roundScores, activePlayer, dice, diceLog, winScore;
 //Variable Initialization
 scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
+
+winScore = prompt("Enter the score required to win :");
 
 //Hiding the Oppoite player's roll button and the dice
 document
@@ -134,7 +136,7 @@ function hold() {
     .getElementById("current-" + activePlayer)
     .textContent = roundScore;
   
-  if (scores[activePlayer] >= 100) {
+  if (scores[activePlayer] >= winScore) {
     
     //Doesn't change activePlayer
     playerWin();
