@@ -1,20 +1,25 @@
 //*Variables
-var scores, roundScores, activePlayer, dice, diceLog, winScore;
+var scores, roundScores, activePlayer, dice1, dice2, diceLog;
+
 //Variable Initialization
 scores = [0, 0];
 roundScore = 0;
 activePlayer = 0;
 
-winScore = prompt("Enter the score required to win :");
 
 //Hiding the Oppoite player's roll button and the dice
 document
-  .querySelector(".dice")
+  .getElementById("dice-1")
+  .style.display = "none";
+document
+  .getElementById("dice-2")
   .style.display = "none";
 document
   .querySelector(".btn-roll" + (activePlayer + 1))
   .style.display = "none";
 
+
+  
 //*New Game Function (Resets Everything)
 function newGame() {
 
@@ -38,6 +43,10 @@ function newGame() {
   
   document
     .querySelector(".dice")
+    .style.display = "none";
+
+  document
+    .querySelector(".final-score")
     .style.display = "none";
   
   document
@@ -65,23 +74,29 @@ function newGame() {
     .textContent = 0;
 }
 
+
 //*Roll Button Press Funtion (Adds the rolled amount to round score)
 function roll() {
   
-  var diceDOM = document.querySelector(".dice");
+  var diceDOM1 = document.getElementById("dice-1");
+  var diceDOM2 = document.getElementById("dice-2");
   
-  dice = Math.floor(Math.random() * 6) + 1;
+  dice1 = Math.floor(Math.random() * 6) + 1;
+  dice2 = Math.floor(Math.random() * 6) + 1;
   
-  console.log(dice);
-  
-  if (dice !== 1) {
+  diceDOM1.style.display = "block";
+  diceDOM2.style.display = "block";
+  diceDOM1.src = "assets/dice-" + dice1 + ".png";
+  diceDOM2.src = "assets/dice-" + dice2 + ".png";
+
+  if (dice1 !== 1 && dice2 !== 1) {
     
-    diceDOM.style.display = "block";
-    diceDOM.src = "assets/dice-" + dice + ".png";
+    roundScore += (dice1 + dice2);
     
-    roundScore += dice;
-    
-    dice === 6 ? diceLog++ : diceLog = 0;
+    if (dice1 === 6 || dice2 === 6 )
+      diceLog++ 
+    else 
+      diceLog = 0;
     
     if (diceLog === 2){
       scores[activePlayer] = 0;
@@ -95,6 +110,7 @@ function roll() {
         .textContent = roundScore;
 
       changeActivePlayer();
+      return;
     }
     
     document
@@ -105,8 +121,27 @@ function roll() {
     
     roundScore = 0;
     
-    diceDOM.src = "assets/dice-1.png";
+    if (dice1 === 6 || dice2 === 6 )
+      diceLog++ 
+    else 
+      diceLog = 0;
     
+    if (diceLog === 2){
+      scores[activePlayer] = 0;
+      roundScore = 0;
+
+      document
+        .getElementById("score-" + activePlayer)
+        .textContent = scores[activePlayer];
+      document
+        .getElementById("current-" + activePlayer)
+        .textContent = roundScore;
+
+      changeActivePlayer();
+      return;
+    }
+    
+
     document
       .getElementById("current-" + activePlayer)
       .textContent = roundScore;
@@ -117,9 +152,16 @@ function roll() {
 
 }
 
+
 //*Hold Button Function (Adds round score to global score checks for winner)
 function hold() {
-  
+
+  var input  = document.querySelector(".final-score").value;
+  console.log(input);
+
+  if (input == false)
+    input= 100;
+
   if (roundScore === 0) {
   
     return;
@@ -136,7 +178,7 @@ function hold() {
     .getElementById("current-" + activePlayer)
     .textContent = roundScore;
   
-  if (scores[activePlayer] >= winScore) {
+  if (scores[activePlayer] >= input) {
     
     //Doesn't change activePlayer
     playerWin();
@@ -145,6 +187,7 @@ function hold() {
   }
   
   changeActivePlayer();
+
 
 //*Player Win Function (Removes all buttons and dice)
 }
@@ -161,10 +204,16 @@ function playerWin() {
     .classList.remove("active"); 
   //Hides Dice from view
   document
-    .querySelector(".dice")
+    .getElementById("dice-1")
     .style.display = "none";
-
+  document
+    .getElementById("dice-2")
+    .style.display = "none";
+  
   //Automatically forces players to start new game
+  document
+    .querySelector(".final-score")
+    .style.display = "none";
   document
     .querySelector(".btn-roll" + activePlayer)
     .style.display = "none";
@@ -173,6 +222,7 @@ function playerWin() {
     .style.display = "none";
 
 }
+
 
 //*Active Player Swap Function
 function changeActivePlayer() {
@@ -188,6 +238,7 @@ function changeActivePlayer() {
     .querySelector(".btn-roll" + activePlayer)
     .style.display = "none";
 
+  diceLog = 0;
   
   if (activePlayer === 0) {
   
@@ -212,6 +263,7 @@ function changeActivePlayer() {
     .style.display = "block";
 
 }
+
 
 //*Button Listeners
 document
