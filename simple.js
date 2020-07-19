@@ -87,6 +87,7 @@ function btn() {
     
     roundScore = 0;
     
+    diceDOM.style.display = "block";
     diceDOM.src = "assets/dice-1.png";
     
     document
