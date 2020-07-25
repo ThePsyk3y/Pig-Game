@@ -47,7 +47,7 @@ function newGame() {
 
   document
     .querySelector(".final-score")
-    .style.display = "none";
+    .style.display = "block";
   
   document
     .querySelector(".btn-roll" + activePlayer)
