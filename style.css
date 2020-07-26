@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body {
   background-image: linear-gradient(
       rgba(62, 20, 20, 0.4),
@@ -19,7 +25,19 @@ body {
   color: #555;
 }
 
-.mode-panel{
+.wrapper {
+  width: 1000px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/*.mode-panel{
     width: 1000px;
     height: 400px;
     position: absolute;
@@ -29,7 +47,7 @@ body {
     background-color: #fff;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-}
+}*/
 
 .mode-title{
     font-size: 65px;
