@@ -26,8 +26,8 @@ body {
 }
 
 .wrapper {
-  width: 1000px;
-  height: 400px;
+  width: 80%;
+  height: 60%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,20 +49,20 @@ body {
     overflow: hidden;
 }*/
 
-.mode-title{
-    font-size: 65px;
-    font: 'Lato';
-    font-weight: bold;
-    text-align: center;
-    top: 120px;
-    background-color: lightgray;
+.mode-title {
+  position: relative;
+  font-size: 65px;
+  font: "Lato";
+  font-weight: bold;
+  text-align: center;
+  background-color: lightgray;
 }
 
 .mode-adv {
-    width: 50%;
-    float: right;
-    height: 400px;
-    background-color: #f7f7f7;
+  width: 50%;
+  float: right;
+  height: 400px;
+  background-color: #f7f7f7;
 }
 
 button {
@@ -83,27 +83,28 @@ button:hover {
   font-weight: 600;
 }
 button:hover i {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 button:focus {
   outline: none;
 }
 
-.btn-mode-simp{
-    font-size: 35px;
-    top: 200px;
-    margin-left: 15%;
+.btn-mode-simp {
+  font-size: 35px;
+  top: 200px;
+  margin-left: 15%;
 }
 
-.btn-mode-adv{
-    white-space: nowrap;
-    font-size: 35px;
-    top: 200px;
-    margin-left: 15%;
+.btn-mode-adv {
+  white-space: nowrap;
+  font-size: 35px;
+  top: 200px;
+  margin-left: 15%;
 }
 
-.simp-ico, .adv-ico {
-    width: 25px;
-    height: 25px;
+.simp-ico,
+.adv-ico {
+  width: 25px;
+  height: 25px;
 }
